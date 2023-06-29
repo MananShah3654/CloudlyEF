@@ -10,6 +10,21 @@ namespace CloudlyEF.Controllers
 {
     public class MoviesController : Controller
     {
+        public ViewResult Index()
+        {
+            var movies = GetMovies();
+
+            return View(movies);
+        }
+
+        private IEnumerable<Movies> GetMovies()
+        {
+            return new List<Movies>
+            {
+                new Movies { Id = 1, Name = "Adipurush" },
+                new Movies { Id = 2, Name = "Kung fu Panda" }
+            };
+        }
         // GET: Movies
         public ActionResult Random()
         {
