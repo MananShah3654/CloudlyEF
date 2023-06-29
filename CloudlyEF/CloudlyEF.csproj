@@ -175,6 +175,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202306291417258_InitialModel.cs" />
+    <Compile Include="Migrations\202306291417258_InitialModel.Designer.cs">
+      <DependentUpon>202306291417258_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202306291423111_InitialModel1.cs" />
+    <Compile Include="Migrations\202306291423111_InitialModel1.Designer.cs">
+      <DependentUpon>202306291423111_InitialModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customers.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -185,6 +194,10 @@
     <Compile Include="ViewModel\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-CloudlyEF-20230629021329.mdf" />
+    <Content Include="App_Data\aspnet-CloudlyEF-20230629021329_log.ldf">
+      <DependentUpon>aspnet-CloudlyEF-20230629021329.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -247,9 +260,7 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -262,6 +273,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202306291417258_InitialModel.resx">
+      <DependentUpon>202306291417258_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202306291423111_InitialModel1.resx">
+      <DependentUpon>202306291423111_InitialModel1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
