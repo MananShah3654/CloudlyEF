@@ -15,6 +15,7 @@ namespace CloudlyEF.Models
         public bool IsSubscribedNewsLetter { get; set; }
         public MembershipType MembershipType {get; set;}
         public byte MembershipTypeId { get; set; }
+        public DateTime? Birthdate { get; set; }
 
-}
+    }
 }
