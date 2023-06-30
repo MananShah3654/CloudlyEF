@@ -21,6 +21,7 @@ namespace CloudlyEF.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Customers> Customers {get; set;}
+        public DbSet<Movies> Movies { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

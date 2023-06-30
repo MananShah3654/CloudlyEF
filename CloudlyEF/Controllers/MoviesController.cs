@@ -5,30 +5,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Linq;
 
 namespace CloudlyEF.Controllers
 {
     public class MoviesController : Controller
     {
-        public ViewResult Index()
-        {
-            var movies = GetMovies();
+        private ApplicationDbContext _context;
 
-            return View(movies);
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
         }
 
-        private IEnumerable<Movies> GetMovies()
+        protected override void Dispose(bool disposing)
         {
-            return new List<Movies>
-            {
-                new Movies { Id = 1, Name = "Adipurush" },
-                new Movies { Id = 2, Name = "Kung fu Panda" }
-            };
+            _context.Dispose();
+        }
+        public ViewResult Index()
+        {
+            var Movies = _context.Movies.Include(m => m.Genre).ToList();
+
+            return View(Movies);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
+                return HttpNotFound();
+
+            return View(movie);
         }
         // GET: Movies
         public ActionResult Random()
         {
-            var movies = new Movies() { Name = "Adipurush !" };
+            var Movies = new Movies() { Name = "Adipurush !" };
 
             var customers = new List<Customers>
             {  new Customers { Id=1, Name="Customer 1"},
@@ -37,7 +51,7 @@ namespace CloudlyEF.Controllers
             
             var viewModel = new RandomMovieViewModel
             {
-                Movie = movies,
+                Movie = Movies,
                 Customer = customers
             };
 
