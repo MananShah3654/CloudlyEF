@@ -8,7 +8,7 @@ namespace CloudlyEF.ViewModel
 {
     public class CustomerFormViewModel
     {
-        public IEnumerable<MembershipType> MembeshipType { get; set; }
+        public IEnumerable<MembershipType> MembershipType { get; set; }
         public Customers Customer { get; set; }
     }
 }
