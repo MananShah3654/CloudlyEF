@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Linq;
+using CloudlyEF.ViewModels;
 
 namespace CloudlyEF.Controllers
 {
@@ -48,9 +49,8 @@ namespace CloudlyEF.Controllers
             if (movie == null)
                 return HttpNotFound();
 
-            var viewModel = new MovieFormViewModel
+            var viewModel = new MovieFormViewModel(movie)
             {
-                Movie = movie,
                 Genres = _context.Genres.ToList()
             };
 
@@ -58,8 +58,19 @@ namespace CloudlyEF.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Movies movie)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new MovieFormViewModel(movie)
+                {
+                    Genres = _context.Genres.ToList()
+                };
+
+                return View("MovieForm", viewModel);
+            }
+
             if (movie.Id == 0)
             {
                 movie.DateAdded = DateTime.Now;
