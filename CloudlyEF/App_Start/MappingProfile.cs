@@ -13,7 +13,16 @@ namespace CloudlyEF.App_Start
     {
         public MappingProfile()
         {
+            // Domain to Dto
             CreateMap<Customers, CustomerDto>().ReverseMap();
+            CreateMap<Movies, MovieDto>().ReverseMap();
+
+            // Dto to Domain
+            CreateMap<CustomerDto, Customers>()
+                .ForMember(c => c.Id, opt => opt.Ignore());
+
+            CreateMap<MovieDto, Movies>()
+                .ForMember(c => c.Id, opt => opt.Ignore());
         }
 
         
