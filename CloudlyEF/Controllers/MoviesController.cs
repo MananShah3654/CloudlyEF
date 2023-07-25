@@ -26,8 +26,12 @@ namespace CloudlyEF.Controllers
         }
         public ViewResult Index()
         {
-            return View();
+            if (User.IsInRole("CanManageMovies"))
+            return View("List");
+            return View("ReadOnlyList");
         }
+
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ViewResult New()
         {
             var genres = _context.Genres.ToList();
@@ -40,6 +44,7 @@ namespace CloudlyEF.Controllers
             return View("MovieForm", viewModel);
         }
 
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Edit(int id)
         {
             var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
@@ -57,6 +62,7 @@ namespace CloudlyEF.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMovies)]
         public ActionResult Save(Movies movie)
         {
             if (!ModelState.IsValid)
