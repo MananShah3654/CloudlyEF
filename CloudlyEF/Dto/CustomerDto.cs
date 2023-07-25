@@ -21,5 +21,7 @@ namespace CloudlyEF.Dto
 
         [Min18YearsIfAMember]
         public DateTime? Birthdate { get; set; }
+
+        public MembershipTypeDto MembershipType { get; set; }
     }
 }

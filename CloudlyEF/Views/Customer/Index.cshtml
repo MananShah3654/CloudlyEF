@@ -16,12 +16,7 @@
 }
 
 <h2>Customers</h2>
-@if (!Model.Any())
-{
-    <p>We don't have any customers yet.</p>
-}
-else
-{
+
     <table id="customers" class="table table-bordered table-hover">
     <thead>
         <tr>
@@ -32,7 +27,7 @@ else
     </thead>
     <tbody></tbody>
 </table>
-}
+
 @section scripts
 {
     <script>
@@ -51,7 +46,7 @@ else
                         }
                     },
                     {
-                        data: "name"
+                        data: "membershipType.name"
                     },
                     {
                         data: "id",

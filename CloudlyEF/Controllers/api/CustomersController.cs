@@ -8,6 +8,7 @@ using CloudlyEF.Models;
 using AutoMapper;
 using CloudlyEF.Dto;
 using CloudlyEF.App_Start;
+using System.Data.Entity;
 
 namespace CloudlyEF.Controllers.api
 {
@@ -30,8 +31,8 @@ namespace CloudlyEF.Controllers.api
 
 		public IHttpActionResult GetCustomers()
 		{
-			var customerDtos = _mapper.Map<IEnumerable<CustomerDto>>(_context.Customers.ToList());
-
+			var customerDtos = _mapper.Map<IEnumerable<CustomerDto>>(_context.Customers.Include(c => c.MembershipType).ToList());
+			
 			return Ok(customerDtos);
 		}
 
