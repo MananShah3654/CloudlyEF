@@ -17,6 +17,7 @@ namespace CloudlyEF.App_Start
             CreateMap<Customers, CustomerDto>().ReverseMap();
             CreateMap<Movies, MovieDto>().ReverseMap();
             CreateMap<MembershipType, MembershipTypeDto>();
+            CreateMap<Genre, GenreDto>();
 
             // Dto to Domain
             CreateMap<CustomerDto, Customers>()

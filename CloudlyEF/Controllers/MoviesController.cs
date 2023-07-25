@@ -26,9 +26,7 @@ namespace CloudlyEF.Controllers
         }
         public ViewResult Index()
         {
-            var Movies = _context.Movies.Include(m => m.Genre).ToList();
-
-            return View(Movies);
+            return View();
         }
         public ViewResult New()
         {

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 
 namespace CloudlyEF.Controllers.api
 {
@@ -23,8 +24,8 @@ namespace CloudlyEF.Controllers.api
 
         public IHttpActionResult GetMovies()
         {
-            var movieDtos = _mapper.Map<IEnumerable<MovieDto>>(_context.Movies.ToList());
-
+            var movieDtos = _mapper.Map<IEnumerable<MovieDto>>(_context.Movies.Include(m => m.Genre).ToList());
+           
             return Ok(movieDtos);
 
         }
