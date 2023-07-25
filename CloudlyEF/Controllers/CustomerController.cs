@@ -23,6 +23,7 @@ namespace CloudlyEF.Controllers
         {
             _context.Dispose();
         }
+        [Authorize]
         public ViewResult Index()
         {
             return View();
