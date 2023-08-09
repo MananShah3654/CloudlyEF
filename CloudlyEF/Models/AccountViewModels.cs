@@ -8,6 +8,8 @@ namespace CloudlyEF.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        public string DrivingLicense { get; set; }
     }
 
     public class ExternalLoginListViewModel

@@ -58,11 +58,11 @@ namespace CloudlyEF
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "193135504298-6kk7ie4sq6nq8447gjghmi5o5466ao20.apps.googleusercontent.com",
+                ClientSecret = "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"
+            });
         }
     }
 }
